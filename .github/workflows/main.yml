@@ -53,12 +53,12 @@ jobs:
       - name: Login to Docker
         uses: docker/login-action@v2
         with:
-          username: ${{DOCKER_USERNAME}}
-          password: ${{DOCKER_PASSWORD}}
+          username: ${{ DOCKER_USERNAME }}
+          password: ${{ DOCKER_PASSWORD }}
       - name: Push to Docker
         uses: docker/build-push-action@v4
         with:
           context: ./backend/
           push: true
-          tags: ${{DOCKER_USERNAME}}/taski_backend:latest
+          tags: ${{ DOCKER_USERNAME }}/taski_backend:latest
 
