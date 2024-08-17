@@ -63,7 +63,6 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/taski_backend:latest
   frontend_tests:
     runs-on: ubuntu-latest
-    needs: tests
     steps:
       - uses: actions/checkout@v3
       - name: Set up nodeJS
@@ -142,7 +141,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
-        script:
+        script: |
           cd taski
           sudo docker compose -f docker-compose.production.yml pull
           sudo docker compose -f docker-compose.production.yml down
