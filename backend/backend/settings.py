@@ -1,12 +1,20 @@
 import os
+from dotenv import load_dotenv
 from pathlib import Path
+
+environment = os.getenv('ENVIRONMENT', 'development')
+
+if environment == 'production':
+    load_dotenv('.env.production')
+else:
+    load_dotenv('.env.development')
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = 'django-insecure-j_89af+30&&4qm*8z9_(^zz8p4-ho8z_m6ylm0s$h!-p@on1_^'
+SECRET_KEY = os.getenv('SECRET_KEY', '')
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'False')
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '158.160.70.242', 'taski.serveftp.com']
 

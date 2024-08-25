@@ -7,18 +7,18 @@ volumes:
 services:
   db:
     image: postgres:13.10
-    env_file: .env
+    env_file: .env.development
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
     build: ./backend/
-    env_file: .env
+    env_file: .env.development
     volumes:
       - static:/backend_static
     depends_on:
       - db
   frontend:
-    env_file: .env
+    env_file: .env.development
     build: ./frontend/
     volumes:
       - static:/frontend_static
